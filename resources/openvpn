@@ -1,3 +1,0 @@
-%users ALL=(ALL) NOPASSWD: /usr/sbin/openvpn
-%users ALL=(ALL) NOPASSWD: /usr/bin/systemctl * openvpn@*
-%users ALL=(ALL) NOPASSWD: /usr/bin/pkill openvpn 
