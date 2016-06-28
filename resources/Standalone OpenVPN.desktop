@@ -2,8 +2,8 @@
 Name=Standalone OpenVPN
 Comment=Starting OpenVPN in stadnalone Mode
 GenericName=Starting OpenVPN in standalone Mode
-Exec=openvpnshell standalone
-TryExec=openvpnshell
+Exec=sudo /usr/local/bin/openvpnshell standalone
+TryExec=/usr/local/bin/openvpnshell
 Icon=/usr/share/icons/hicolor/scalable/apps/openvpn4ucs_logo.svg
 Categories=Network
 Terminal=true
