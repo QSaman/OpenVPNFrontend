@@ -5,7 +5,7 @@ A simple frontend for OpenVPN in GNU/Linux. At the moment it doesn't have a fanc
 You need Linux operating system which supports systemd and of course OpenVPN!
 
 ## How to Install
-Go to source directory and run following commands:
+Go to source directory and run the following commands:
 
 ```
 mkdir build
