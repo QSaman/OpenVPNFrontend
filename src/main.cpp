@@ -96,17 +96,17 @@ int main(int argc, char* argv[])
     if (index == 0)
     {
         if (daemon)
-            return std::system("sudo /usr/local/bin/openvpn.sh daemon stop");
+            return std::system("openvpn.sh daemon stop");
         else
             return std::system("sudo pkill openvpn");
     }
     if (index == 1 && daemon)
-        return std::system("sudo /usr/local/bin/openvpn.sh daemon log");
+        return std::system("openvpn.sh daemon log");
     std::string str;
     if (std::string(argv[1]) == "daemon")
-        str = "sudo /usr/local/bin/openvpn.sh daemon start ";
+        str = "openvpn.sh daemon start ";
     else
-        str = "sudo /usr/local/bin/openvpn.sh standalone ";
+        str = "openvpn.sh standalone ";
     str += configList[index];
     return std::system(str.c_str());
 }

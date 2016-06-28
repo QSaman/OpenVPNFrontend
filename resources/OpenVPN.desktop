@@ -2,8 +2,8 @@
 Name=OpenVPN
 Comment=Starting OpenVPN in Daemon Mode
 GenericName=Starting OpenVPN in Daemon Mode
-Exec=sudo /usr/local/bin/openvpnshell daemon
-TryExec=/usr/local/bin/openvpnshell
+Exec=openvpnshell daemon
+TryExec=openvpnshell
 Icon=/usr/share/icons/hicolor/scalable/apps/openvpn4ucs_logo.svg
 Categories=Network
 Terminal=true
