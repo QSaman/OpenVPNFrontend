@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=OpenVPN
+Comment=Starting OpenVPN in Daemon Mode
+GenericName=Starting OpenVPN in Daemon Mode
+Exec=gnome-terminal --class=OpenVPNShellDaemon openvpnshell daemon
+#StartupWMClass=OpenVPNShell
+TryExec=openvpnshell
+Icon=/usr/share/icons/hicolor/scalable/apps/openvpn4ucs_logo.svg
+Categories=Network
+Terminal=false
+Type=Application
+Version=1.0
