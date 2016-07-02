@@ -57,15 +57,10 @@ function start
     checkConfigFileName "$1"
     process=`systemctl status openvpn@*.service | egrep -om 1 '\<openvpn@.+\.service\>'`
 
-    if [ "$process" != "openvpn@${1}.service" ]
+    if [ "$process" != "openvpn@${1}.service" ] && [ "$process" != "" ]
     then
-        if [ "$process" != "" ]
-        then
-            echo "Stopping $process"
-            sudo systemctl stop $process
-        fi        
-    else
-        echo "${1}.conf has been started before."
+        echo "Stopping all openvpn processes"
+        sudo systemctl stop openvpn@*.service
     fi
     sudo systemctl start openvpn@${1}.service
     journalctl -n 40 -b -fu openvpn@${1}.service
