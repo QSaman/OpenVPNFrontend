@@ -63,11 +63,11 @@ function start
         then
             echo "Stopping $process"
             sudo systemctl stop $process
-        fi
-        sudo systemctl start openvpn@${1}.service
+        fi        
     else
         echo "${1}.conf has been started before."
     fi
+    sudo systemctl start openvpn@${1}.service
     journalctl -n 40 -b -fu openvpn@${1}.service
 }
 
