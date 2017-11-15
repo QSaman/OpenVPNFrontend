@@ -12,5 +12,5 @@ else
 fi
 
 echo "%users ALL=(ALL) NOPASSWD: $openvpnPath" > "$output"
-echo "%users ALL=(ALL) NOPASSWD: $systemctlPath * openvpn@*" >> "$output"
+echo "%users ALL=(ALL) NOPASSWD: $systemctlPath * openvpn-client@*" >> "$output"
 echo "%users ALL=(ALL) NOPASSWD: $pkillPath openvpn" >> "$output"

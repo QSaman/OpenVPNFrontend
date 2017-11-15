@@ -39,15 +39,15 @@ function checkDeluge
 
 function stop
 {
-    sudo systemctl stop openvpn@*.service
-    journalctl -n 40 -b -f /usr/sbin/openvpn
+    sudo systemctl stop openvpn-client@*.service
+    journalctl -n 40 -b -f /usr/sbin/openvpn-client
 }
 
 function checkConfigFileName
 {
-    if [ ! -f /etc/openvpn/${1}.conf ] || [ "${1}" = "" ]
+    if [ ! -f /etc/openvpn/client/${1}.conf ] || [ "${1}" = "" ]
     then
-        echo "Invalid argument ${1}. /etc/openvpn/${1}.conf doesn't exist."
+        echo "Invalid argument ${1}. /etc/openvpn/client/${1}.conf doesn't exist."
         exit 1
     fi
 }
@@ -55,15 +55,15 @@ function checkConfigFileName
 function start
 {
     checkConfigFileName "$1"
-    process=`systemctl status openvpn@*.service | egrep -om 1 '\<openvpn@.+\.service\>'`
+    process=`systemctl status openvpn-client@*.service | egrep -om 1 '\<openvpn-client@.+\.service\>'`
 
-    if [ "$process" != "openvpn@${1}.service" ] && [ "$process" != "" ]
+    if [ "$process" != "openvpn-client@${1}.service" ] && [ "$process" != "" ]
     then
         echo "Stopping all openvpn processes"
-        sudo systemctl stop openvpn@*.service
+        sudo systemctl stop openvpn-client@*.service
     fi
-    sudo systemctl start openvpn@${1}.service
-    journalctl -n 40 -b -fu openvpn@${1}.service
+    sudo systemctl start openvpn-client@${1}.service
+    journalctl -n 40 -b -fu openvpn-client@${1}.service
 }
 
 function runAsDaemon
@@ -93,7 +93,7 @@ function runAsStandalone
     checkConfigFileName "$1"
     checkDeluge
     checkVuze
-    sudo /usr/sbin/openvpn --cd /etc/openvpn --config ${1}.conf
+    sudo /usr/sbin/openvpn --cd /etc/openvpn/client --config ${1}.conf
 }
 
 if [ "$1" = "daemon" ]
