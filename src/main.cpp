@@ -6,9 +6,9 @@
 #include <algorithm>
 #include <iterator>
 
-std::vector<std::string> configList;
+static std::vector<std::string> configList;
 
-bool daemon = false;
+static bool daemon = false;
 
 void initConfigList(int argc, char* argv[])
 {
@@ -52,11 +52,13 @@ void initConfigList(int argc, char* argv[])
         {
             std::vector<std::string> vTmp =
             {
-                "client-udp",
+                "client-udp-tls-crypt",
                 "client-udp-udpobfuscator",
                 "client-udp-obfuscated",
-                "client-tcp",
-                "client-tcp-obfsproxy"
+                "client-udp",
+                "client-tcp-tls-crypt",
+                "client-tcp-obfsproxy",
+                "client-tcp"
             };
             std::copy(vTmp.begin(), vTmp.end(), std::back_inserter(configList));
             return;
@@ -90,6 +92,7 @@ int getUserChoice()
 int main(int argc, char* argv[])
 {
     initConfigList(argc, argv);
+
     std::string modeStr = (daemon ? "daemon" : "standalone");
     std::cout << "Running OpenVPN in " << modeStr << " mode\n" << std::endl;
     int index = getUserChoice();
