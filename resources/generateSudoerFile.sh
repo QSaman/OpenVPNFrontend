@@ -11,6 +11,7 @@ else
     output="./openvpn"
 fi
 
-echo "%users ALL=(ALL) NOPASSWD: $openvpnPath" > "$output"
-echo "%users ALL=(ALL) NOPASSWD: $systemctlPath * openvpn-client@*" >> "$output"
-echo "%users ALL=(ALL) NOPASSWD: $pkillPath openvpn" >> "$output"
+echo "# Make sure the user is in the group wheel" > "$output"
+echo "%wheel ALL=(ALL) NOPASSWD: $openvpnPath" >> "$output"
+echo "%wheel ALL=(ALL) NOPASSWD: $systemctlPath * openvpn-client@*" >> "$output"
+echo "%wheel ALL=(ALL) NOPASSWD: $pkillPath openvpn" >> "$output"
